@@ -3,3 +3,4 @@ venv
 __pycache__
 secrets
 github_repos.json
+web/hugo/themes/PaperMod
