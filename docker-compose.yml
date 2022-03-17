@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      - api
+      - web
+    restart: always
+    environment:
+      #DOMAINS: 'nagata.pro -> http://web:80, www.nagata.pro -> http://web:80, api.nagata.pro -> http://api:80'
+      DOMAINS: 'localhost -> http://web:80, www.nagata.pro -> http://web:80, api.nagata.pro -> http://api:80'
+      STAGE: local
+      # STAGE: 'production' # Don't use production until staging works
+      # FORCE_RENEW: 'true'
+      RENEW_MARGIN_DAYS: 7
+
+  api:
+    restart: always
+    build:
+      context: ./api
+    command: python main.py
+
+  web:
+    restart: always
+    build:
+      context: ./web
+    command: /run.sh
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - type: bind
+        source: ./web/hugo
+        target: /hugo
+    ports:
+      - '8080:80'
+      - '80:80'
+      - '443:443'
+
+volumes:
+  https-portal-data:

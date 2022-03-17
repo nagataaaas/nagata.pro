@@ -1,0 +1,50 @@
+<h1 class="entry-desc" id="skills">SKILLS</h1>
+
+{{- with $.Site.Params.Skills }}
+<div class="entry-list-wrapper tech first">
+    <header class="entry-header">
+        <h2>
+            Tech
+        </h2>
+    </header>
+    <section class="entry-content">
+            <h3 class="entry-list-title">Intermediate / Advanced</h3>
+            <ul class="inline-list">
+                {{ range .Tech.IntermediateAdvanced }}
+                <li>{{ . }}</li>
+                {{ end }}
+            </ul>
+            <h3 class="entry-list-title">Can Handle Somehow</h3>
+            <ul class="inline-list">
+                {{ range .Tech.CanHandleSomehow }}
+                <li>{{ . }}</li>
+                {{ end }}
+            </ul>
+    </section>
+    <footer class="entry-footer">
+    </footer>
+</div>
+<div class="entry-list-wrapper language">
+    <header class="entry-header">
+        <h2>
+            Language
+        </h2>
+    </header>
+    <section class="entry-content">
+        <h3 class="entry-list-title">Fluent</h3>
+            <ul class="inline-list">
+                {{ range .Language.Fluent }}
+                <li>{{ . }}</li>
+                {{ end }}
+            </ul>
+        <h3 class="entry-list-title">Business</h3>
+            <ul class="inline-list">
+                {{ range .Language.Business }}
+                <li>{{ . }}</li>
+                {{ end }}
+            </ul>
+    </section>
+    <footer class="entry-footer">
+    </footer>
+</div>
+{{ end }}

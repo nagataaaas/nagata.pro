@@ -1,0 +1,6 @@
+venv
+setupserver.sh
+web/themes
+.idea
+.git
+secrets

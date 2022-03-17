@@ -1,0 +1,9 @@
+{{- $username := .Get "username" -}}
+{{- $repo := .Get "repo" -}}
+{{- if not $username -}}
+  {{ errorf "missing value for param 'username': ％s" .Position }}
+{{- end -}}
+{{- if not $repo -}}
+  {{ errorf "missing value for param 'repo ％s" .Position }}
+{{- end -}}
+<a href="https://github.com/{{- $username }}/{{- $repo }}"><img src="https://gh-card.dev/repos/{{- $username }}/{{- $repo }}.svg"></a>

@@ -1,0 +1,19 @@
+{{- with $.Site.Params.homeInfoParams }}
+<h1 class="entry-desc" id="about-me">ABOUT ME</h1>
+<article class="home-info">
+    {{- if .imageUrl -}}
+    <img src="{{ .imageUrl | absURL }}" alt="{{ .imageTitle | default "profile image" }}"
+        height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}"
+        class="lemon"/>
+    {{- end }}
+    <header class="entry-header">
+        <h1>{{ .Title | markdownify }}</h1>
+    </header>
+    <section class="entry-content">
+        <p>{{ .Content | markdownify }}</p>
+    </section>
+    <footer class="entry-footer">
+        {{ partial "social_icons.html" $.Site.Params.socialIcons }}
+    </footer>
+</article>
+{{- end -}}

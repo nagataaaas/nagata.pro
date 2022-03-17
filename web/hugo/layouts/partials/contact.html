@@ -1,0 +1,68 @@
+<h1 class="entry-desc" id="contact-me">CONTACT ME</h1>
+<div class="contact">
+    <form method="POST" id="form">
+        <div class="fields">
+            <div class="field">
+                <label class="field-label" for="name">Name</label>
+                <input type="text" name="name" id="name" placeholder="Enter your name" required>
+            </div>
+            <div class="field">
+                <label class="field-label" for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="field"
+            ><label class="field-label" for="message">Message</label>
+                <textarea type="text" name="message" id="message" placeholder="Enter your message"
+                          rows="4" required></textarea>
+            </div>
+
+
+        </div>
+        <div class="button-wrapper">
+            <button type="submit" class="button">SUBMIT</button>
+        </div>
+    </form>
+    <div id="success-message" class="form-result hidden">
+        <p>Your message has been sent successfully!</p>
+    </div>
+    <div id="error-message" class="form-result hidden">
+        <p>Something went wrong, try refreshing and submitting the form again.</p>
+    </div>
+</div>
+<script>
+    form = document.getElementById("form");
+    form.addEventListener("submit", formSubmit);
+
+    function formSubmit(e) {
+        e.preventDefault();
+
+        const error = true;
+        if (error) {
+            document.getElementById("error-message").classList.remove("hidden");
+        } else {
+            document.getElementById("success-message").classList.remove("hidden");
+            document.getElementById("form").reset();
+        }
+        return;
+
+        const formData = new FormData();
+        formData.append(
+            'name',
+            document.querySelector('input[name="name"]').value
+        )
+        formData.append(
+            'email',
+            document.querySelector('input[name="email"]').value
+        )
+        formData.append(
+            'message',
+            document.querySelector('textarea[name="message"]').value
+        )
+        fetch({{ .Site.Params.ContactFormURL}}, {
+            method: "POST",
+            body: formData,
+        })
+            .then(response => console.log(response))
+            .catch(error => console.log(error))
+    }
+</script>

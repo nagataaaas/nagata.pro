@@ -1,0 +1,16 @@
+<h1 class="entry-desc" id="experience">EXPERIENCE</h1>
+
+{{ range $.Site.Params.Career }}
+<div class="list-entry">
+    <header class="entry-header">
+        <h2>
+            {{- .name }} <small> as {{ .position }}</small>
+        </h2>
+        <span class="from">{{ .from }}</span>{{- if not (eq .until "") }} <span class="tilda">~</span> <span class="until">{{ .until }}</span>{{- end }}
+    </header>
+    <section class="entry-content">
+        <p>{{ .description | markdownify }}</p>
+    </section>
+</div>
+
+{{ end }}

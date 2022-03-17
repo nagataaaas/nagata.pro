@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QRCODE</title>
+</head>
+<body>
+<div id="container">
+    <div id="qrcode">
+        {% if image_info.background.image and image_info.center_image.as_mask %}
+            <img src="{{ image_info.center_image.image }}" alt="brand" class="mask brand" style="{{ image_info.center_image.style }}">
+        {% endif %}
+        <table>
+            <tbody>
+            <tr>
+                {% for line in qrcode %}
+                    <tr>
+                        {% for item in line %}
+                            {% if isinstance(item, Marker) %}
+                                <td colspan="{{ item.width }}" rowspan="{{ item.width }}"
+                                    style="width: {{ 20 * item.width }}px; height: {{ 20 * item.width }}px;"
+                                    class="marker">
+                                    {{ item.html }}
+                                </td>
+                            {% else %}
+                                <td>
+                                    <div class="center empty-wrapper">{{ item.html }}</div>
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% if image_info.center_image.type == 'image' and not image_info.center_image.as_mask %}
+        <img src="{{ image_info.center_image.image }}" alt="brand" class="brand" style="{{ image_info.center_image.style }}">
+    {% endif %}
+</div>
+<style>
+
+    :root {
+        --qr-background: {{ background_color }};
+    {# background #}
+    {% if image_info.background.type == 'image' %}
+        --qr-background-image: url({{ image_info.background.image }});
+        --qr-background-color: black;
+        --qr-blend-mode: screen;
+    {% elif image_info.background.type == 'css' %}
+        --qr-background-image: {{ image_info.background.image }};
+        --qr-background-color: black;
+        --qr-blend-mode: screen;
+    {% else %}
+        --qr-background-image: none;
+        --qr-background-color: black;
+        --qr-blend-mode: normal;
+    {% endif %}
+
+    {# qr size #} --qr-width: {{ (image_info.width * dot_size) * (100 - image_info.padding * 2) / 100 }}px;
+        --qr-height: {{ (image_info.height * dot_size) * (100 - image_info.padding * 2) / 100 }}px;
+        --qr-size: {{ qrcode.__len__() * dot_size }}px;
+
+
+        --qr-dot-size: {{ dot_size }}px;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--qr-background);
+    }
+
+    #container {
+        background-image: var(--qr-background-image);
+        background-color: var(--qr-background-color);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        position: relative;
+    }
+
+    #qrcode {
+        position: relative;
+        padding: {{ margin }}px;
+        overflow: visible;
+        background-color: white;
+        mix-blend-mode: var(--qr-blend-mode);
+    }
+
+    img.brand {
+        width: var(--qr-width);
+        height: var(--qr-height);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        z-index: 33;
+    }
+
+    img.mask.brand {
+        filter: grayscale(100%);
+    }
+
+    table {
+        border: none;
+        border-collapse: collapse;
+        width: var(--qr-size);
+        height: var(--qr-size);
+    }
+
+    td {
+        width: var(--qr-dot-size);
+        height: var(--qr-dot-size);
+        margin: 0;
+        padding: 0;
+    }
+
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+
+    span {
+        overflow: hidden;
+    }
+
+    .empty-wrapper {
+        background: white;
+    }
+
+    span.empty {
+        font-size: var(--qr-dot-size);
+        overflow: hidden;
+        background: var(--qr-background);
+    }
+
+    div {
+        overflow: hidden;
+    }
+
+    td.marker {
+
+    }
+
+    td.marker, td.marker div, span.super-ellipse {
+        overflow: visible;
+    }
+
+    td.marker div div span {
+        width: 100%;
+        height: 100%;
+    }
+
+    td.marker div div:last-child span {
+        z-index: 6;
+    }
+
+
+    td.marker div div:first-child span {
+        z-index: 3;
+    }
+
+    td.marker div div:nth-child(2) span {
+        z-index: 5;
+    }
+
+    div.marker-wrapper {
+    }
+
+    .super-ellipse {
+    }
+
+    .se1, .se2 {
+        content: '';
+        position: absolute;
+        width: auto !important;
+        height: auto !important;
+    }
+
+    .super-ellipse:first-child .se1, .super-ellipse:first-child .se2 {
+        background-color: inherit;
+    }
+
+    .super-ellipse:first-child .se1 {
+        border-radius: 30%/2%;
+        top: -1%;
+        bottom: -1%;
+        right: 15%;
+        left: 15%;
+        z-index: 2;
+    }
+
+    .super-ellipse:first-child .se2 {
+        border-radius: 2%/30%;
+        right: -1%;
+        left: -1%;
+        top: 15%;
+        bottom: 15%;
+        z-index: 2;
+    }
+
+    .super-ellipse:nth-child(2) .se1, .super-ellipse:nth-child(2) .se2 {
+        background-color: white;
+    }
+
+    .super-ellipse:nth-child(2) .se1 {
+        border-radius: 30%/2%;
+        top: -1%;
+        bottom: -1%;
+        right: 15%;
+        left: 15%;
+        z-index: 4;
+    }
+
+    .super-ellipse:nth-child(2) .se2 {
+        border-radius: 2%/30%;
+        right: -1%;
+        left: -1%;
+        top: 15%;
+        bottom: 15%;
+        z-index: 4;
+    }
+</style>
+</body>
+</html>

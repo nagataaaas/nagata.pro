@@ -1,0 +1,138 @@
+{{ $dataJ := getJSON "static/github_repos.json" }}
+
+<h1 class="entry-desc" id="projects">PROJECTS</h1>
+
+<div class="project-entry-wrapper">
+    <header class="entry-header">
+        <h2>
+            GitHub Repositories
+        </h2>
+        <span class="repo-count">{{ len $dataJ }} repositories</span>
+    </header>
+    <section class="entry-content">
+
+        <div class="center">
+            <div id="fade-wrapper">
+                <div id="projects-wrapper">
+                    {{ if gt (len $dataJ) 0 }}{{ if not (eq (index $dataJ 0) "") }}
+                    {{- $stars := slice -}}
+                    {{- range $dataJ -}}
+                    {{- $stars = $stars | append .stargazers_count -}}
+                    {{- end -}}
+                    {{- $stars = $stars | uniq | sort -}}
+                    {{- range sort $stars "value" "desc" -}}
+                    {{- range where (sort $dataJ "updated_at" "desc") "stargazers_count" . -}}
+                    {{ if eq .fork false }}
+                    {{ $updated_at := .updated_at | time }}
+                    {{ $updated_before := div (sub now.Unix $updated_at.Unix) 86400 }}
+                    {{ $updated_before_str := printf "%d days ago" $updated_before }}
+                    {{ if eq $updated_before 0 }}
+                    {{- $updated_before_str = "Today" -}}
+                    {{ else if eq $updated_before 1 }}
+                    {{- $updated_before_str = "Yesterday" -}}
+                    {{ end }}
+
+                    {{ $pushed_at := .pushed_at | time }}
+                    {{ $pushed_before := div (sub now.Unix $pushed_at.Unix) 86400 }}
+                    {{ $pushed_before_str := printf "%d days ago" $pushed_before }}
+                    {{ if eq $pushed_before 0 }}
+                    {{- $pushed_before_str = "Today" -}}
+                    {{ else if eq $pushed_before 1 }}
+                    {{- $pushed_before_str = "Yesterday" -}}
+                    {{ end }}
+
+                    <div class="project">
+                        <div>
+                            <h3>
+                                <a href="${project.html_url}" target="_blank">{{ .name }}</a>
+                            </h3>
+                            <div class="stats">
+                                <div><a href="${project.stargazers_url}" target="_blank"><i
+                                        class="fa-solid fa-star"></i>{{ .stargazers_count }}</a></div>
+                                <div><a href="${project.forks_url}" target="_blank"><i
+                                        class="fa-solid fa-code-branch"></i>{{ .forks_count }}</a></div>
+                                <div><i class="fa-solid fa-eye"></i>
+                                    <p>{{ .watchers_count }}</p></div>
+                                <div class="language">{{ .language }}</div>
+                            </div>
+                            <div class="topics">
+                                <ul class="inline-list">
+                                    {{- range .topics -}}
+                                    <li>#{{ . }}</li>
+                                    {{- end -}}
+                                </ul>
+                            </div>
+                            <div class="description"><p>{{.description }}</p></div>
+                        </div>
+                        <div class="last-updated">
+                            <div>Last updated {{ $updated_before_str }}</div>
+                            <div>Last pushed {{ $pushed_before_str }}</div>
+                        </div>
+                    </div>
+                    {{- end -}}
+                    {{- end -}}
+                    {{- end -}}
+                    {{ end }}{{ end }}
+                </div>
+                <fade></fade>
+                <div id="expand"><p><i class="fa-solid fa-angles-down"></i></p></div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{{- with $.Site.Params.Projects.other }}
+<div class="entry-list-wrapper">
+    <header class="entry-header">
+        <h2>
+            Other Projects
+        </h2>
+    </header>
+    <section class="entry-content">
+    {{- range .projects }}
+        <h3 class="entry-list-title">{{ .name }}</h3>
+        <div class="inline-info">{{ .description | markdownify }}</div>
+    {{ end }}
+    </section>
+</div>
+{{ end }}
+<script>
+    const wrapper = document.getElementById("projects-wrapper");
+    const expand = document.getElementById('expand');
+    const fade = document.getElementsByTagName('fade')[0];
+    const getMaxHeight = () => {
+        const firstTop = wrapper.firstElementChild.offsetTop;
+
+        let index = null;
+        if ([...wrapper.children].some((e, i) => {
+            if (e.offsetTop !== firstTop) {
+                index = i;
+                return true;
+            }
+        })) {
+            console.log(index);
+            const nthElements = [...(wrapper.querySelectorAll(`div.project:nth-child(${index}n)`))]
+            if (wrapper.children.length > nthElements.length * index) {
+                nthElements.push(wrapper.children[nthElements.length * index])
+            }
+            const wrapper_height = nthElements.map(e => e.clientHeight).reduce((a, b) => a + b, 0)
+            if (wrapper.style.maxHeight) wrapper.style.maxHeight = wrapper_height * 1.1 + "px";
+
+            expand.onclick = () => {
+                // if maxHeight is set in inline style, remove it
+                if (wrapper.style.maxHeight) {
+                    wrapper.style.maxHeight = null;
+                    expand.style.transform = 'rotate(0deg)';
+                    fade.style.display = null;
+                    return;
+                }
+                wrapper.style.maxHeight = wrapper_height * 1.1 + "px";
+                expand.style.transform = 'rotate(180deg)';
+                fade.style.display = 'none';
+            };
+        }
+    }
+
+    getMaxHeight()
+    window.onresize = getMaxHeight;
+</script>

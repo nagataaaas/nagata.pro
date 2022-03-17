@@ -1,0 +1,381 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600&display=swap');
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+h1.entry-desc {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 1em auto 0.5em auto;
+    text-align: center;
+}
+
+h1.entry-desc:first-child {
+    margin-top: 0.5em;
+}
+
+article.home-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 320px;
+    align-items: center;
+    margin: var(--gap) 0 calc(var(--gap) * 2);
+}
+
+article.home-info section.entry-content p {
+    text-align: center;
+    line-height: 1.5em;
+}
+
+img.lemon {
+    display: inline-table;
+    border-radius: 50%;
+    pointer-events: none;
+    border: 2px solid #fff;
+    margin-bottom: 0.5em;
+}
+
+div.entry-list-wrapper:not(.first) {
+    margin-top: 1em;
+}
+
+div.entry-list-wrapper section.entry-content {
+    -webkit-line-clamp: unset !important;
+    margin-left: 1em;
+}
+
+h3.entry-list-title {
+    color: var(--secondary);
+}
+
+div.entry-list-wrapper section.entry-content h3:not(:first-child) {
+    margin-top: 1em;
+}
+
+.inline-list {
+    list-style: none;
+    padding: 0;
+}
+
+.inline-list li {
+    display: inline-block;
+}
+
+.inline-list li:first-child::before {
+    content: "";
+    padding-left: 0;
+}
+
+.inline-list li::before {
+    content: "|";
+    padding: 10px;
+}
+
+.inline-info {
+    padding-left: 1em;
+}
+
+.topics > .inline-list > li::before {
+    content: "";
+    padding: 0;
+}
+
+.topics > .inline-list > li {
+    margin-right: 0.7em;
+}
+
+div.list-entry:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1em;
+}
+
+div.list-entry:not(:first-child) {
+    margin-top: 1em;
+}
+
+div.list-entry section.entry-content {
+    -webkit-line-clamp: unset !important;
+}
+
+div.list-entry section.entry-content {
+    color: var(--primary);
+}
+
+div.list-entry header h2 small {
+    color: var(--secondary);
+    font-size: 0.65em;
+    font-weight: normal;
+}
+
+div.list-entry header span.from {
+    color: var(--secondary);
+    font-size: 0.9em;
+    font-weight: normal;
+}
+
+div.list-entry header span.tilda {
+    color: var(--secondary);
+    font-size: 0.7em;
+    font-weight: normal;
+}
+
+div.list-entry header span.until {
+    color: var(--secondary);
+    font-size: 0.9em;
+    font-weight: normal;
+}
+
+#projects-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-bottom: 2em;
+    min-width: 95vw;
+    justify-content: center;
+    letter-spacing: 1px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    overflow: hidden;
+    transition: max-height 1s;
+    max-height: 400px;
+}
+
+.project {
+    width: 350px;
+    margin: 1em 1em 0 1em;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    justify-content: space-between;
+    background-color: var(--theme);
+    background-clip: border-box;
+    border: 1px solid var(--tertiary);
+    font-size: 0.8em;
+}
+
+.project > div {
+    padding: 1.25em;
+    display: flex;
+    flex-direction: column;
+}
+
+.project > div:not(:last-child) {
+    padding-bottom: 0;
+}
+
+.project > div:not(:first-child) {
+    padding-top: 0;
+}
+
+.project h3 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+.stats {
+    display: flex;
+    flex-direction: row;
+}
+
+.topics {
+    color: var(--secondary);
+    margin-bottom: 0.5em;
+}
+
+.stats div {
+    display: flex;
+    flex-direction: row;
+    margin-right: 1em;
+    align-items: center;
+
+}
+
+.project-entry-wrapper > section.entry-content {
+    overflow: visible;
+    font-size: inherit;
+    margin-bottom: 2em;
+}
+
+.entry-list-wrapper > .entry-header {
+    margin-bottom: 1em;
+}
+
+.project p {
+    margin: 0;
+    padding: 5px;
+}
+
+.description > p {
+    padding: 0 0 1em 0;
+}
+
+.last-updated {
+    margin-top: 0.5em;
+    color: var(--secondary);
+    background-color: var(--border);
+    padding: 0.8em 1.25em !important;
+}
+
+#fade-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+fade {
+    position: absolute;
+    bottom: 6em;
+
+    display: block;
+
+    min-width: 95vw;
+    height: 100px;
+
+    background-image: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0),
+    var(--code-bg) 100%);
+}
+
+.dark fade {
+    background-image: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0),
+    var(--theme) 100%);
+
+}
+
+#expand {
+    text-align: center;
+    z-index: 10;
+    font-size: 2em;
+    width: 2em;
+    height: 2em;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary);
+    border: 3px solid var(--secondary);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+
+div.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40vw;
+    min-width: 300px;
+    margin: 2em auto 0 auto;
+
+    font-weight: 400;
+    font-family: 'Sora', sans-serif;
+}
+
+h1.title {
+    font-weight: 600;
+    font-size: 2em;
+}
+
+.fields {
+    margin-bottom: 3em;
+    display: flex;
+    flex-direction: column;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.3em;
+}
+
+.field-label {
+    margin-bottom: 0.5em;
+}
+
+.field input, .field textarea {
+    width: 100%;
+    padding-bottom: 0.5em;
+    border-bottom: 3px solid #c0c0c0;
+    font-size: 1em;
+    color: var(--primary) !important;
+    font-weight: 400;
+}
+
+.field input:-webkit-autofill, .field textarea:-webkit-autofill {
+    background-color: var(--code-bg) !important;
+    background-image: none;
+    -webkit-text-fill-color: #999;
+}
+
+.field textarea {
+    resize: none;
+}
+
+.field input::placeholder, .field textarea::placeholder {
+    color: #c0c0c0;
+}
+
+body.dark .field input, body.dark .field textarea {
+    border-bottom: 3px solid #747474;
+}
+
+body.dark .field input::placeholder, body.dark .field textarea::placeholder {
+    color: #747474;
+}
+
+.button-wrapper button {
+    border: 3px solid var(--primary);
+    color: var(--primary);
+    background-color: transparent;
+    margin: 0 auto;
+    padding: 0.5em 3em;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0;
+    display: block;
+    white-space: nowrap;
+    transition: background-color 0.2s ease-out;
+    position: relative;
+}
+
+.button-wrapper button:hover {
+    background-color: var(--primary);
+    color: var(--theme);
+}
+
+#contact-me {
+    margin-top: 4em;
+}
+
+.hidden {
+    display: none;
+}
+
+.form-result {
+    margin-top: 0.5em;
+    font-size: 1.4em;
+    text-align: center;
+}
+
+#error-message {
+    color: #b45e6b;
+}
+
+.entry-content.unset-size {
+    max-height: unset;
+    height: unset;
+    -webkit-line-clamp: unset;
+
+}

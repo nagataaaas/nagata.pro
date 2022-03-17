@@ -1,0 +1,269 @@
+baseURL: https://nagata.pro/
+languageCode: ja-JP
+title: どうも、ながたです
+author: ながた
+defaultContentLanguage: ja
+theme: PaperMod
+
+ShowToc: true
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+pygmentsUseClasses: true
+
+minify:
+  disableXML: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # is necessary
+
+languages:
+  ja:
+    languageName: ":ja:"
+    weight: 1
+
+  en:
+    languageName: ":en:"
+    weight: 2
+    title: Hi there, I'm Nagata
+    author: Nagata
+    Projects:
+      github:
+        url: https://api.github.com/users/nagataaaas/repos?type=owner&sort=updated&per_page=100
+      other:
+        projects:
+          - name: Widget to display wind direction/speed/time in GUI
+            description: This widget displays information observed by [Usuda Deep Space Center](https://global.jaxa.jp/about/centers/udsc/index.html) in GUI in conjunction with [Zabbix](https://www.zabbix.com/). It is actually used at Usuda Deep Space Center.
+          - name: A product that can create advertisements with node-based programming language
+            description: non-programmers can easily create contextual advertising services
+          - name: Scraping
+            description: I have created a program for scraping various e-commerce sites, newspapers, horse racing, NBA, etc.
+          - name: Food delivery service
+            description: >
+              Created backend and part of the frontend of a food delivery service. \
+              
+              [MySQL](https://www.mysql.com/) / [FastAPI](https://fastapi.tiangolo.com/) / 
+              GoogleAPIs [GeoCoding](https://developers.google.com/maps/documentation/geocoding/overview), 
+              [Directions](https://developers.google.com/maps/documentation/directions/overview), 
+              [Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/overview) are used
+          - name: Code Review
+            description: reviewing code for many customers, sometimes even writing entire programs for them
+          - name: Business improvement
+            description: Improved efficiency by automating business processes and changing the input of business information to a GUI-based application.
+          - name: Bringing services online
+            description: I have made some services more user-friendly by converting customer's own excel files or scripts into online services.
+          - name: Electric bulletin board style information display
+            description: A product that displays various information using html/css + JavaScript in the style of an electric bulletin board.
+
+    Params:
+      homeInfoParams:
+        Title: Nagata🐱
+        Content: >
+          I am an IT engineer. I've worked mainly on the backend, \
+          
+          but I'll also work on the frontend **with tears in my eyes** when it's needed.\
+          
+          I love **Python** and many other things. I've been using it for more than 10 years.\
+          
+          I'm Nagata.
+        imageUrl: "/image/lemon.jpg"
+      Career:
+        - name: DeNA
+          position: ENGINEER
+          from: "Apr 2022(future)"
+          until: " "
+          description: >
+            I join(ed) the company as a newly graduated engineer.
+        - name: Intern at DeNA
+          position: BACKEND DEVELOPER
+          from: "Jan 2021"
+          until: "Aug 2021"
+          description: >
+            It was extremely difficult because I had to develop an actual launched application in a language and 
+            environment that I was dealing with for the first time, but it broadened my perspective as an engineer.
+        - name: Intern at DeNA
+          position: BACKEND DEVELOPER
+          from: "Aug 2019"
+          until: ""
+          description: >
+            It was the first step toward a more practical engineering career, 
+            and an important factor in determining my future career path.
+        - name: Intern at LINE
+          position: BACKEND DEVELOPER
+          from: "Aug 2018"
+          until: "Sep 2018"
+          description: >
+            It was my first experience in creating a medium or larger scale product, and although there were 
+            many things I did not understand, it was an opportunity to learn the true beauty of programming.
+        - name: Freelance Programmer
+          position: FULL STACK DEVELOPER
+          from: "Apr 2017"
+          until: "Present"
+          description: >
+            I am a freelance programmer. I have done a variety of projects to enhance my abilities.
+
+
+
+Params:
+#  env: production
+  ContactFormURL: https://getform.io/f/354d83f8-2000-47fd-9e2a-01bc902b5363
+  Skills:
+    Tech:
+      IntermediateAdvanced: [ Python, JavaScript, Go,C, C++, Kotlin, HTML5/CSS3, SQL ]
+      CanHandleSomehow: [ Rust, Julia, Swift, Java ]
+    Language:
+      Fluent: [Japanese]
+      Business: [English]
+  displayFullLangName: false
+  ShowCodeCopyButtons: true
+  assets:
+    favicon: /icon/favicon.ico
+    favicon16x16: /icon/favicon-16x16.png
+    favicon32x32: /icon/favicon-32x32.png
+    apple_touch_icon: /icon/apple-touch-icon.png
+    safari_pinned_tab: /icon/safari-pinned-tab.svg
+    theme_color: '#ffffff'
+    msapplication_TileColor: '#da532c'
+  customCss:
+    - css/top.css
+  ShowReadingTime: true
+  homeInfoParams:
+    Title: ながた🐱
+    Content: >
+      ITエンジニアです。主にバックエンド担当を経験してきましたが\
+      
+      フロントエンドも必要に迫られた時は**涙を流しながら**対応します\
+      
+      **Python**とかいろいろ好きです。かれこれ10年お世話になっています\
+      
+      ながたです
+    imageUrl: "/image/lemon.jpg"
+  ShowShareButtons: true
+  socialIcons: # optional
+    - name: "github"
+      url: "https://github.com/nagataaaas"
+    - name: "email"
+      url: "mailto:nagata@nagata.pro"
+    - name: "twitter"
+      url: "https://twitter.com/514YJ"
+
+  Projects:
+    github:
+      url: https://api.github.com/users/nagataaaas/repos?type=owner&sort=updated&per_page=100
+    other:
+      projects:
+        - name: 風向/風速/時刻をGUIで表示するウィジェット
+          description: >
+            [臼田宇宙空間観測所](https://www.jaxa.jp/about/centers/udsc/index_j.html)で観測した情報を、[Zabbix](https://www.zabbix.com/jp)と連携してGUIで表示するウィジェットです\
+            
+            実際に臼田宇宙空間観測所で用いられています
+        - name: ノードベースで広告を作成できるプロダクト
+          description: ノンプログラマーでも簡単にコンテキストのある広告サービスを作成できます
+        - name: スクレイピング
+          description: 様々なECサイトや新聞、競馬、NBAなどのスクレイピングを行うプログラムを作成しました
+        - name: フードデリバリーサービス
+          description: >
+            フードデリバリーサービスのバックエンドおよびフロントエンドの一部を作成しました。\
+            
+            [MySQL](https://www.mysql.com/ja) / [FastAPI](https://fastapi.tiangolo.com/) / 
+            GoogleAPIs [GeoCoding](https://developers.google.com/maps/documentation/geocoding/overview), 
+            [Directions](https://developers.google.com/maps/documentation/directions/overview), 
+            [Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/overview?hl=ja-JP) を基幹に用いています
+        - name: コードレビュー
+          description: 多くのカスタマーのコードのレビュー等を行い、プログラムの作成まですることもあります
+        - name: 業務改善
+          description: 業務で用いる処理を自動化したり、入力をGUIベースのアプリケーションに変更するこどで、効率化を図りました
+        - name: サービスのオンライン化
+          description: カスタマーが自作したエクセルファイルなどを、オンライン化することでよりユーザフレンドリーなサービスにしました
+        - name: 電光掲示板風情報表示
+          description: html/css + JavaScriptを用いて、様々な情報を電光掲示板風に表示するプロダクト
+  Career:
+    - name: DeNA
+      position: an ENGINEER
+      from: "Apr 2022(future)"
+      until: " "
+      description: >
+        新卒でエンジニアとして入社します。
+    - name: Intern at DeNA
+      position: a BACKEND DEVELOPER
+      from: "Jan 2021"
+      until: "Aug 2021"
+      description: >
+        実際にローンチされるアプリを初めて扱う言語・環境で開発するため非常にハードルが高かったですが、エンジニアとしての視野が広がりました。
+    - name: Intern at DeNA
+      position: a BACKEND DEVELOPER
+      from: "Aug 2019"
+      until: ""
+      description: >
+        より実践的なエンジニアリングへの足がかりとなり、以降の進路を決める重要なファクターになりました。
+    - name: Intern at LINE
+      position: a BACKEND DEVELOPER
+      from: "Aug 2018"
+      until: "Sep 2018"
+      description: >
+        初めて中規模以上のプロダクトを制作する経験でわからないことだらけでしたが、業務プログラミングの素晴らしさを知る機会となりました。
+    - name: Freelance Programmer
+      position: a FULL STACK DEVELOPER
+      from: "Apr 2017"
+      until: "Present"
+      description: >
+        フリーランスとしてプログラム業務を行っています。自分の能力を高めるため、様々な案件を行ってきました。
+
+
+#  editPost:
+#    URL: "https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content"
+#    Text: "Suggest Changes" # edit text
+#    appendFilePath: true # to append file path to Edit link
+
+menu:
+  main:
+    - identifier: home
+      name: Home
+      url: /
+      weight: 10
+    - identifier: archive
+      name: Archive
+      url: /archives
+      weight: 20
+    - identifier: categories
+      name: Categories
+      url: /categories
+      weight: 30
+    - identifier: tags
+      name: Tags
+      url: /tags
+      weight: 40
+    - identifier: search
+      name: Search
+      url: /search
+      weight: 50
+    - identifier: github
+      name: GitHub
+      url: https://github.com/nagataaaas
+      weight: 60
+    - identifier: twitter
+      name: Twitter
+      url: https://twitter.com/514YJ
+      weight: 70
+
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+taxonomies:
+  category: categories
+  tag: tags
+  series: series
+
+caches:
+  getjson:
+    dir: :cacheDir/:project
+    maxAge: 0
