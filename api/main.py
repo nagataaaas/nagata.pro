@@ -17,7 +17,6 @@ async def root():
 @app.get("/.well-known/acme-challenge/{filename}")
 async def well_known(filename: str):
     challenge_dir = '/var/www/html/.well-known/acme-challenge'
-    print(os.listdir(challenge_dir))
     if filename in os.listdir(challenge_dir):
         with open(f"{challenge_dir}/{filename}", 'r') as f:
             return f.read()
