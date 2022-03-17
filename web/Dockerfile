@@ -14,6 +14,7 @@ RUN wget $HUGO_URL --no-check-certificate || true
 RUN dpkg -i $HUGO_FILE
 
 ADD ./run.sh /run.sh
+RUN chmod +x /run.sh
 ADD ./themes /themes
 
 # setting cron
