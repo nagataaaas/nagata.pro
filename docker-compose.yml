@@ -13,6 +13,7 @@ services:
     restart: always
     environment:
       DOMAINS: >
+        localhost -> http://web,
         nagata.pro -> http://web, 
         www.nagata.pro -> http://web, 
         api.nagata.pro -> http://api
@@ -27,17 +28,27 @@ services:
       context: ./api
     command: python main.py
 
-  web:
+  hugo:
     restart: always
     build:
       context: ./web
-    command: /run.sh
     environment:
       TZ: Asia/Tokyo
     volumes:
       - type: bind
         source: ./web/hugo
         target: /hugo
+
+  web:
+    image: joseluisq/static-web-server:2
+    environment:
+      - SERVER_ROOT=/public
+    volumes:
+      - type: bind
+        source: ./web/hugo/public
+        target: /public
+    depends_on:
+      - hugo
 
 volumes:
   https-portal-data:
