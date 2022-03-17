@@ -20,7 +20,7 @@ ADD ./themes /themes
 # setting cron
 # wget https://api.github.com/users/nagataaaas/repos?type=owner&sort=updated&per_page=100 each minutes
 
-RUN echo '* * * * * wget -O - "https://api.github.com/users/nagataaaas/repos?type=owner&sort=updated&per_page=100" --no-check-certificate >  /hugo/static/github_repos.json' > /etc/cron.d/crontab
+RUN echo '0 * * * * wget -O - "https://api.github.com/users/nagataaaas/repos?type=owner&sort=updated&per_page=100" --no-check-certificate >  /hugo/static/github_repos.json' > /etc/cron.d/crontab
 # Give execution rights on the cron job
 RUN chmod 0644 /etc/cron.d/crontab
 
