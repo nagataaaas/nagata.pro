@@ -2,5 +2,7 @@ venv
 .idea
 __pycache__
 secrets
-github_repos.json
+web/hugo/github_repos.json
+web/hugo/static/github_repos.json
 web/hugo/themes/PaperMod
+web/hugo/public

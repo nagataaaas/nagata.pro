@@ -19,10 +19,12 @@ RUN chmod +x /run.sh
 # setting cron
 # wget https://api.github.com/users/nagataaaas/repos?type=owner&sort=updated&per_page=100 each minutes
 
-RUN echo '* * * * * ./run.sh' > /etc/cron.d/crontab
+RUN echo '0 * * * * cd /; ./run.sh  > /var/log/cron.log 2>&1' > /etc/cron.d/crontab
 # Give execution rights on the cron job
 RUN chmod 0644 /etc/cron.d/crontab
 
 RUN /usr/bin/crontab /etc/cron.d/crontab
+
+RUN cd /; ./run.sh
 
 CMD ["cron", "-f"]
