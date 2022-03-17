@@ -25,6 +25,4 @@ RUN chmod 0644 /etc/cron.d/crontab
 
 RUN /usr/bin/crontab /etc/cron.d/crontab
 
-RUN cd /; ./run.sh
-
-CMD ["cron", "-f"]
+CMD cd / && ./run.sh && cron -f
