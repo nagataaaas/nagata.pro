@@ -5,6 +5,7 @@ services:
     image: steveltn/https-portal:1
     ports:
       - '80:80'
+      - '8080:80'
       - '443:443'
     links:
       - api
@@ -15,7 +16,7 @@ services:
         nagata.pro -> http://web, 
         www.nagata.pro -> http://web, 
         api.nagata.pro -> http://api
-      STAGE: staging
+      STAGE: local
       # STAGE: 'production' # Don't use production until staging works
       # FORCE_RENEW: 'true'
       RENEW_MARGIN_DAYS: 7
