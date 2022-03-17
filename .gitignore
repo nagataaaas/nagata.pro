@@ -2,4 +2,4 @@ venv
 .idea
 __pycache__
 secrets
-web/hugo/static/github_repos.json
+github_repos.json

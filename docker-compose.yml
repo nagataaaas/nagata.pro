@@ -11,7 +11,10 @@ services:
       - web
     restart: always
     environment:
-      DOMAINS: 'nagata.pro -> http://web:80, www.nagata.pro -> http://web:80, api.nagata.pro -> http://api:80'
+      DOMAINS: >
+        nagata.pro -> http://web, 
+        www.nagata.pro -> http://web, 
+        api.nagata.pro -> http://api
       STAGE: staging
       # STAGE: 'production' # Don't use production until staging works
       # FORCE_RENEW: 'true'
