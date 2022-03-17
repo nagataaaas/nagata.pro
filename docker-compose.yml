@@ -11,9 +11,8 @@ services:
       - web
     restart: always
     environment:
-      #DOMAINS: 'nagata.pro -> http://web:80, www.nagata.pro -> http://web:80, api.nagata.pro -> http://api:80'
-      DOMAINS: 'localhost -> http://web:80, www.nagata.pro -> http://web:80, api.nagata.pro -> http://api:80'
-      STAGE: local
+      DOMAINS: 'nagata.pro -> http://web:80, www.nagata.pro -> http://web:80, api.nagata.pro -> http://api:80'
+      STAGE: staging
       # STAGE: 'production' # Don't use production until staging works
       # FORCE_RENEW: 'true'
       RENEW_MARGIN_DAYS: 7
@@ -35,10 +34,6 @@ services:
       - type: bind
         source: ./web/hugo
         target: /hugo
-    ports:
-      - '8080:80'
-      - '80:80'
-      - '443:443'
 
 volumes:
   https-portal-data:
