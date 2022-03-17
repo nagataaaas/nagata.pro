@@ -53,6 +53,7 @@ div.entry-list-wrapper section.entry-content {
 
 h3.entry-list-title {
     color: var(--secondary);
+    text-transform: capitalize;
 }
 
 div.entry-list-wrapper section.entry-content h3:not(:first-child) {
