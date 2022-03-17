@@ -15,7 +15,6 @@ RUN dpkg -i $HUGO_FILE
 
 ADD ./run.sh /run.sh
 RUN chmod +x /run.sh
-ADD ./themes /themes
 
 # setting cron
 # wget https://api.github.com/users/nagataaaas/repos?type=owner&sort=updated&per_page=100 each minutes
