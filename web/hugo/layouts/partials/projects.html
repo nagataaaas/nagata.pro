@@ -119,7 +119,7 @@
             let currentHeight = 0;
             nthElements.forEach((e, i) => {
                 currentHeight += e.offsetHeight * 1.1;
-                if (i % 8 === 0) {
+                if (i % Math.round(8 / index) === 0) {
                     if (heightList.length === 0) {
                         if (currentHeight > 400) {
                             heightList.push(400);

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600&display=swap');
 
-html{
+html {
     color: var(--theme);
 }
 
@@ -154,7 +154,7 @@ div.list-entry header span.until {
     font-weight: 400;
     overflow: hidden;
     transition: max-height 1s;
-    max-height: 400px;
+    max-height: 300px;
 }
 
 .project {
