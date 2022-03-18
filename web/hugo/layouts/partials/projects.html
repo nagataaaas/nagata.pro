@@ -89,10 +89,10 @@
         </h2>
     </header>
     <section class="entry-content">
-    {{- range .projects }}
+        {{- range .projects }}
         <h3 class="entry-list-title">{{ .name }}</h3>
         <div class="inline-info">{{ .description | markdownify }}</div>
-    {{ end }}
+        {{ end }}
     </section>
 </div>
 {{ end }}
@@ -110,25 +110,40 @@
                 return true;
             }
         })) {
-            console.log(index);
+            const heightList = [];
+            let currentIndex = 0;
             const nthElements = [...(wrapper.querySelectorAll(`div.project:nth-child(${index}n)`))]
             if (wrapper.children.length > nthElements.length * index) {
                 nthElements.push(wrapper.children[nthElements.length * index])
             }
-            const wrapper_height = nthElements.map(e => e.clientHeight).reduce((a, b) => a + b, 0)
-            if (wrapper.style.maxHeight) wrapper.style.maxHeight = wrapper_height * 1.1 + "px";
+            let currentHeight = 0;
+            nthElements.forEach((e, i) => {
+                currentHeight += e.offsetHeight * 1.1;
+                if (i % 8 === 0) {
+                    if (heightList.length === 0) {
+                        if (currentHeight > 400) {
+                            heightList.push(400);
+                        }
+                    }
+                    heightList.push(currentHeight);
+                }
+            });
+            const wrapperHeight = nthElements.map(e => e.clientHeight).reduce((a, b) => a + b, 0);
+            heightList.push(wrapperHeight * 1.1);
+            console.log(heightList);
+
+            wrapper.style.maxHeight = heightList[0] + "px";
 
             expand.onclick = () => {
-                // if maxHeight is set in inline style, remove it
-                if (wrapper.style.maxHeight) {
-                    wrapper.style.maxHeight = null;
+                wrapper.style.maxHeight = heightList[++currentIndex % heightList.length] + "px";
+                console.log([currentIndex, heightList.length])
+                if (currentIndex % heightList.length === 0) {  // top
                     expand.style.transform = 'rotate(0deg)';
                     fade.style.display = null;
-                    return;
+                } else if(currentIndex % heightList.length === heightList.length - 1) {  // bottom
+                    expand.style.transform = 'rotate(180deg)';
+                    fade.style.display = 'none';
                 }
-                wrapper.style.maxHeight = wrapper_height * 1.1 + "px";
-                expand.style.transform = 'rotate(180deg)';
-                fade.style.display = 'none';
             };
         }
     }
