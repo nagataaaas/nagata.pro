@@ -77,7 +77,6 @@ services:
       - ./mail/docker-data/dms/config/:/tmp/docker-mailserver/
       - /etc/localtime:/etc/localtime:ro
       - /etc/letsencrypt:/etc/letsencrypt
-      - ./mail/postfix/main.cf:/etc/postfix/main.cf
     restart: always
     stop_grace_period: 1m
     cap_add:

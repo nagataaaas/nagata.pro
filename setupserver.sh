@@ -21,3 +21,7 @@ cd app || exit
 
 # docker
 sudo docker-compose up --build -d
+
+# update letsencrypt
+# docker run --rm -p 443:443 -p 80:80 --name letsencrypt -v "/etc/letsencrypt:/etc/letsencrypt" -v "/var/lib/letsencrypt:/var/lib/letsencrypt" certbot/certbot certonly -n -m "nagata@mail.nagata.pro" -d mail.nagata.pro
+# docker run --rm -p 443:443 -p 80:80 --name letsencrypt -v "/etc/letsencrypt:/etc/letsencrypt" -v "/var/lib/letsencrypt:/var/lib/letsencrypt" certbot/certbot certonly -n -m "nagata@mail.nagata.pro" -d nagata.pro                    --standalone --agree-tos
