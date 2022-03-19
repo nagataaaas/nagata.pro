@@ -14,11 +14,16 @@ services:
       DOMAINS: >
         nagata.pro -> http://web, 
         www.nagata.pro -> http://web, 
-        api.nagata.pro -> http://api
+        api.nagata.pro -> http://api,
+        mail.nagata.pro -> http://web
       STAGE: staging
       # STAGE: 'production' # Don't use production until staging works
       # FORCE_RENEW: 'true'
       RENEW_MARGIN_DAYS: 7
+    volumes:
+      - type: bind
+        source: ./ssl-certs
+        target: /var/lib/https-portal
 
   api:
     restart: always
@@ -71,7 +76,7 @@ services:
       - ./mail/docker-data/dms/mail-logs/:/var/log/mail/
       - ./mail/docker-data/dms/config/:/tmp/docker-mailserver/
       - /etc/localtime:/etc/localtime:ro
-      - /etc/letsencrypt:/etc/letsencrypt
+      - ./ssl-certs/mail.nagata.pro/staging:/etc/letsencrypt/live/mail.nagata.pro/
     restart: always
     stop_grace_period: 1m
     cap_add:
