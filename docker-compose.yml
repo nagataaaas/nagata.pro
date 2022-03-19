@@ -76,7 +76,7 @@ services:
       - ./mail/docker-data/dms/mail-logs/:/var/log/mail/
       - ./mail/docker-data/dms/config/:/tmp/docker-mailserver/
       - /etc/localtime:/etc/localtime:ro
-      - ./ssl-certs/mail.nagata.pro/staging:/etc/letsencrypt/live/mail.nagata.pro/
+      - ./etc/letsencrypt/live/:/etc/letsencrypt/live/
     restart: always
     stop_grace_period: 1m
     cap_add:
