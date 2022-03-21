@@ -1,1 +1,2 @@
-mydestination = localhost.$mydomain, localhost
+mydestination = localhost.nagata.pro, localhost, mail.nagata.pro
+myhostname = mail.nagata.pro
