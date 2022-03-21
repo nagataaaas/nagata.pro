@@ -14,14 +14,17 @@ from .design import *
 import os
 from uuid import uuid4
 
-hti = Html2Image(custom_flags=['--no-sandbox'])
+hti = Html2Image(custom_flags=['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu', '--no-sandbox',
+                               '--disable-dev-shm-usage'])
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 with open(os.path.join(current_dir, 'templates', 'qr.html'), 'r') as f:
     template = jinja2.Template(f.read())
 
+
 def random_image_name() -> str:
     return '{}.png'.format(uuid4())
+
 
 def str_to_qr(string: str, version=6, mask_pattern=2, error_correction=qrcode.constants.ERROR_CORRECT_H) -> Image:
     qr = qrcode.QRCode(version=version, box_size=1, border=0, error_correction=error_correction,
