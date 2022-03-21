@@ -14,8 +14,7 @@ services:
       DOMAINS: >
         nagata.pro -> http://web, 
         www.nagata.pro -> http://web, 
-        api.nagata.pro -> http://api,
-        mail.nagata.pro -> http://web
+        api.nagata.pro -> http://api
       STAGE: staging
       # STAGE: 'production' # Don't use production until staging works
       # FORCE_RENEW: 'true'
@@ -52,46 +51,6 @@ services:
         target: /public
     depends_on:
       - hugo
-
-  mailserver:
-    image: docker.io/mailserver/docker-mailserver:latest
-    container_name: mailserver
-    # If the FQDN for your mail-server is only two labels (eg: example.com),
-    # you can assign this entirely to `hostname` and remove `domainname`.
-    hostname: mail
-    domainname: nagata.pro
-    env_file: mail/mailserver.env
-    # More information about the mail-server ports:
-    # https://docker-mailserver.github.io/docker-mailserver/edge/config/security/understanding-the-ports/
-    # To avoid conflicts with yaml base-60 float, DO NOT remove the quotation marks.
-    ports:
-      - "25:25"    # SMTP  (explicit TLS => STARTTLS)
-      - "143:143"  # IMAP4 (explicit TLS => STARTTLS)
-      - "465:465"  # ESMTP (implicit TLS)
-      - "587:587"  # ESMTP (explicit TLS => STARTTLS)
-      - "993:993"  # IMAP4 (implicit TLS)
-    volumes:
-      - ./mail/docker-data/dms/mail-data/:/var/mail/
-      - ./mail/docker-data/dms/mail-state/:/var/mail-state/
-      - ./mail/docker-data/dms/mail-logs/:/var/log/mail/
-      - ./mail/docker-data/dms/config/:/tmp/docker-mailserver/
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/letsencrypt:/etc/letsencrypt
-    restart: always
-    environment:
-      - ENABLE_SPAMASSASSIN=1
-      - SPAMASSASSIN_SPAM_TO_INBOX=1
-      - ENABLE_CLAMAV=1
-      - ENABLE_FAIL2BAN=1
-      - ENABLE_POSTGREY=1
-      - ENABLE_SASLAUTHD=0
-      - ONE_DIR=1
-      - DMS_DEBUG=0
-    stop_grace_period: 1m
-    cap_add:
-      - NET_ADMIN
-      - SYS_PTRACE
-
 
 volumes:
   https-portal-data:
