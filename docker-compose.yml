@@ -19,6 +19,10 @@ services:
       # STAGE: 'production' # Don't use production until staging works
       # FORCE_RENEW: 'true'
       RENEW_MARGIN_DAYS: 7
+    volumes:
+      - type: bind
+        source: ./ssl-certs
+        target: /var/lib/https-portal
 
   api:
     restart: always
