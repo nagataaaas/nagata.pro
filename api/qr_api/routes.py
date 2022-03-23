@@ -3,10 +3,9 @@ from urllib.parse import unquote_plus
 
 from PIL import Image
 from fastapi import APIRouter
-from fastapi.responses import StreamingResponse
+from fastapi.responses import Response
 
 from .qr import chrome_style_qrcode, instagram_style_qrcode
-from .scheme import QRCodeRequest
 
 router = APIRouter(
     tags=["qrcode"],
@@ -14,18 +13,18 @@ router = APIRouter(
 )
 
 
-@router.post("/chrome")
-async def qr_chrome(req: QRCodeRequest):
-    return create_streaming_response(chrome_style_qrcode(unquote_plus(req.text)))
+@router.get("/chrome", response_class=Response)
+async def qr_chrome(text: str):
+    return create_streaming_response(chrome_style_qrcode(unquote_plus(text)))
 
 
-@router.post("/instagram")
-async def qr_instagram(req: QRCodeRequest):
-    return create_streaming_response(instagram_style_qrcode(unquote_plus(req.text)))
+@router.get("/instagram", response_class=Response)
+async def qr_instagram(text: str):
+    return create_streaming_response(instagram_style_qrcode(unquote_plus(text)))
 
 
-def create_streaming_response(image: Image) -> StreamingResponse:
+def create_streaming_response(image: Image) -> Response:
     image_io = BytesIO()
-    image.save(image_io, "PNG")
+    image.save(image_io, format="PNG")
     image_io.seek(0)
-    return StreamingResponse(image_io, media_type="image/png")
+    return Response(image_io.getvalue(), media_type="image/png")

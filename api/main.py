@@ -1,8 +1,10 @@
+import os
+
+import uvicorn
 from fastapi import FastAPI
 
-from qr_api.routes import router as qrcode_router
 from api_info import about
-import os
+from qr_api.routes import router as qrcode_router
 
 app = FastAPI(**about)
 
@@ -23,6 +25,4 @@ async def well_known(filename: str):
 
 
 if __name__ == '__main__':
-    import uvicorn
-
-    uvicorn.run(app, host="0.0.0.0", port=80)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
