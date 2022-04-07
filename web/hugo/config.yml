@@ -76,7 +76,7 @@ languages:
       Career:
         - name: DeNA
           position: ENGINEER
-          from: "Apr 2022(future)"
+          from: "Apr 2022"
           until: " "
           description: >
             I join(ed) the company as a newly graduated engineer.
@@ -188,7 +188,7 @@ Params:
   Career:
     - name: DeNA
       position: an ENGINEER
-      from: "Apr 2022(future)"
+      from: "Apr 2022"
       until: " "
       description: >
         新卒でエンジニアとして入社します。
