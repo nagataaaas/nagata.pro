@@ -128,8 +128,8 @@
                     heightList.push(currentHeight);
                 }
             });
-            const wrapperHeight = nthElements.map(e => e.clientHeight).reduce((a, b) => a + b, 0);
-            heightList.push(wrapperHeight * 1.1);
+            heightList.pop();
+            heightList.push(nthElements.map(e => e.clientHeight).reduce((a, b) => a + b, 0) * 1.1);
             console.log(heightList);
 
             wrapper.style.maxHeight = heightList[0] + "px";

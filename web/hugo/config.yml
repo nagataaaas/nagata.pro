@@ -108,6 +108,32 @@ languages:
           description: >
             I am a freelance programmer. I have done a variety of projects to enhance my abilities.
 
+      Contact:
+        job:
+          title: About Job Change
+          body: >
+            I am **not** considering a career change at this time\
+            
+            but I will consider it if the employment conditions, environment, and job content 
+            greatly exceed those of my current position.\
+            
+            \
+            
+            I do not accept any contact from recruiters or staffing agencies, regardless of the current situation. \
+            
+            
+            Please contact me at the email address or twitter at the top of this page.
+        interest:
+          title: Area Of Interest
+          items:
+            - title: Technology
+              items: [ "Back-End", "OSS development" ]
+            - title: Business Area
+              items: [ "Interesting products that make life convenient", "Game Content", "Anime and other 'otaku' content" ]
+            - title: Corporate Culture
+              items: [ "Atmosphere where engineers' ideas are welcomed", "Culture of fostering non-technical skills of engineers", "Culture that values autonomy" ]
+
+
 
 
 Params:
@@ -115,8 +141,8 @@ Params:
   ContactFormURL: https://getform.io/f/354d83f8-2000-47fd-9e2a-01bc902b5363
   Skills:
     Tech:
-      IntermediateAdvanced: [ Python, JavaScript, Go,C, C++, Kotlin, HTML5/CSS3, SQL ]
-      CanHandleSomehow: [ Rust, Julia, Swift, Java ]
+      IntermediateAdvanced: [ Python, JavaScript, Go,C, C++, Kotlin, HTML5/CSS3, SQL, Docker, Protocol Buffers, gRPC]
+      CanHandleSomehow: [ Rust, Julia, Swift, Java, Vue.js ]
     Language:
       Fluent: [Japanese]
       Business: [English]
@@ -151,7 +177,7 @@ Params:
     - name: "github"
       url: "https://github.com/nagataaaas"
     - name: "email"
-      url: "mailto:nagata@nagata.pro"
+      url: "mailto:nagata@mail.nagata.pro"
     - name: "twitter"
       url: "https://twitter.com/514YJ"
 
@@ -216,6 +242,32 @@ Params:
       until: "Present"
       description: >
         フリーランスとしてプログラム業務を行っています。自分の能力を高めるため、様々な案件を行ってきました。
+
+  Contact:
+    job:
+      title: 転職について
+      body: >
+        現状転職は**考えていません** \
+        
+        が、雇用条件や環境・業務内容のマッチ度合いが現職を大きく上回る際は、検討させていただきます \
+        
+        \
+        
+        なお、人材紹介業・派遣業の方からのご連絡は現状に関わらずご遠慮いただいています\
+        
+        \
+        
+        ご連絡は、ページトップのメールアドレスかtwitterにお願いいたします
+    interest:
+      title: 興味領域
+      items:
+        - title: 技術
+          items: ["サーバーサイド", "OSS開発"]
+        - title: 事業
+          items: ["生活を便利にする面白いプロダクト", "ゲームコンテンツ", "アニメなどのオタク向けコンテンツ"]
+        - title: 企業文化
+          items: ["エンジニアのアイデアが歓迎される空気", "エンジニアの技術以外の能力育成を行う文化", "自主性を重んじる文化"]
+
 
 
 #  editPost:

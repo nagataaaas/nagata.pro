@@ -280,111 +280,42 @@ fade {
 }
 
 
-div.contact {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 40vw;
-    min-width: 300px;
-    margin: 2em auto 0 auto;
-
-    font-weight: 400;
-    font-family: 'Sora', sans-serif;
-}
-
-h1.title {
-    font-weight: 600;
-    font-size: 2em;
-}
-
-.fields {
-    margin-bottom: 3em;
-    display: flex;
-    flex-direction: column;
-}
-
-.field {
-    display: flex;
-    flex-direction: column;
-    margin-top: 1.3em;
-}
-
-.field-label {
-    margin-bottom: 0.5em;
-}
-
-.field input, .field textarea {
-    width: 100%;
-    padding-bottom: 0.5em;
-    border-bottom: 3px solid #c0c0c0;
-    font-size: 1em;
-    color: var(--primary) !important;
-    font-weight: 400;
-}
-
-.field input:-webkit-autofill, .field textarea:-webkit-autofill {
-    background-color: var(--code-bg) !important;
-    background-image: none;
-    -webkit-text-fill-color: #999;
-}
-
-.field textarea {
-    resize: none;
-}
-
-.field input::placeholder, .field textarea::placeholder {
-    color: #c0c0c0;
-}
-
-body.dark .field input, body.dark .field textarea {
-    border-bottom: 3px solid #747474;
-}
-
-body.dark .field input::placeholder, body.dark .field textarea::placeholder {
-    color: #747474;
-}
-
-.button-wrapper button {
-    border: 3px solid var(--primary);
-    color: var(--primary);
-    background-color: transparent;
-    margin: 0 auto;
-    padding: 0.5em 3em;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 0;
-    display: block;
-    white-space: nowrap;
-    transition: background-color 0.2s ease-out;
-    position: relative;
-}
-
-.button-wrapper button:hover {
-    background-color: var(--primary);
-    color: var(--theme);
-}
-
 #contact-me {
     margin-top: 4em;
 }
 
-.hidden {
-    display: none;
+#contact{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 2em;
+    flex-wrap: wrap;
 }
 
-.form-result {
+#contact > div{
+    width: 45%;
+    min-width: 300px;
+    margin-bottom: 2em;
+    background: var(--theme);
+    padding: 1em 2em;
+    border-radius: 1em;
+    border: 2px solid var(--border);
+}
+
+#contact > div > div{
+    margin-top: 1em;
+    font-size: 0.9em;
+}
+
+#contact > div > div > div{
     margin-top: 0.5em;
-    font-size: 1.4em;
-    text-align: center;
+    padding-bottom: 0.5em;
 }
 
-#error-message {
-    color: #b45e6b;
+#contact > div > div > div:not(:last-child){
+    border-bottom: 1px solid var(--tertiary);
 }
 
-.entry-content.unset-size {
-    max-height: unset;
-    height: unset;
-    -webkit-line-clamp: unset;
-
+#contact > div > div > div > ul{
+    margin-left: 1em;
 }
